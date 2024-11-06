@@ -1,0 +1,27 @@
+/* DEFAULT */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    width: 100%;
+}
+
+/* FONT */
+body {
+    font-family: "Chewy", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.titleHeader {
+    padding: 30px;
+    background-image: url("./img/wall.png");
+}
+
+.title {
+    text-align: center;
+    font-size: 60px;
+}

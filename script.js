@@ -20,3 +20,30 @@ console.log('JS-PHOTO-BLOG')
 // 3) Faccio chiamata axios per prendere url json
 // 4) Faccio funzione con ciclo for per generare 6 card
 // 5) Appendo le card all'html
+
+const cardPhotoEl = document.querySelector('.cardPhoto')
+console.log(cardPhotoEl)
+
+const endPoint = 'https://jsonplaceholder.typicode.com/photos?_limit=6'
+console.log(endPoint)
+
+axios
+    .get(endPoint, {
+        params: {
+            _limit: 6,
+        },
+    })
+    .then((res) => {
+        // console.log(res)
+
+        const photos = res.data
+        console.log(photos)
+
+        const titlePhoto = res.data
+        console.log(titlePhoto)
+
+        appendPhoto(photoEl, cardPhotoEl) //richiamo funzione creata fuori
+    })
+    .catch((err) => {
+        console.log(err)
+    })

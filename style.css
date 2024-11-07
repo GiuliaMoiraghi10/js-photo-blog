@@ -31,15 +31,13 @@ body {
     font-size: 60px;
 }
 
-.backgroundMain {
-    background-image: url(./img/cork.png);
-}
-
 .containerMain {
     margin: 0 auto;
-    max-width: 100%;
     padding: 36px;
-    min-height: 100vh;
+}
+
+.backgroundMain {
+    background-image: url(./img/cork.png);
 }
 
 .row {
@@ -74,7 +72,7 @@ body {
     width: 190px;
     position: relative;
     top: 10px;
-    left: 10px;
+    left: 13px;
     right: 10px;
 }
 
@@ -84,6 +82,36 @@ p {
     padding: 10px;
 }
 
+
+/* OVERLAY */
+.containerOverlay {
+    background-color: rgba(0, 0, 0, 0.466);
+    position: absolute;
+    z-index: 11;
+    height: 100vh;
+    right: 0;
+    left: 0;
+}
+
+.overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60px;
+}
+
+.imgZoom {
+    max-width: 400px;
+    margin-top: 40px;
+}
+
+.btnClose {
+    width: 100px;
+    height: 30px;
+    font-family: "Chewy", serif;
+    font-size: 15px;
+}
 
 /* MEDIA QUERIES DESKTOP FIRST */
 

@@ -18,7 +18,7 @@
 <body>
 
     <!-- OVERLAY -->
-    <section id="overlayId" class="containerOverlay">
+    <section id="overlayId" class="containerOverlay display-none">
         <div class="overlay">
             <button id="overlayBtn" class="btnClose">Chiudi</button>
             <img id="overlayImg" class="imgZoom" src="./img/Vulpix.full.1515167.webp" alt="">
@@ -35,7 +35,9 @@
     <!-- MAIN -->
     <main class="backgroundMain">
         <div class="containerMain">
-            <div class="row cardPhoto"></div>
+            <div class="row cardPhoto">
+                <div id="click-overlay"></div>
+            </div>
         </div>
     </main>
 

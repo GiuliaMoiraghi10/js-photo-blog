@@ -72,19 +72,16 @@ function appendPhoto(photos, root) {
 }
 
 // OVERLAY
-// Prendo elementi overlay
+// Quando clicco card -> compare overlay
+//  - prendo card
+//  - funzione che al click, fa comparire overlay
 
-const overlayId = document.getElementById('overlayId');
-const overlayImg = document.getElementById('overlayImg');
-const overlayBtn = document.getElementById('overlayBtn');
+const photoOverlay = document.getElementById('click-overlay')
+console.log(photoOverlay)
 
-// Aggiungo ascolto per ogni img
-const imgs = document.querySelectorAll('.jpeg');
+const overlayEl = document.getElementById('overlayId')
 
-imgs.forEach(jpeg => {
-    jpeg.addEventListener('click', (event) => {
-        const imageUrl = event.target.src;
-        overlayImg.src = imageUrl;  // Imposta l'immagine nell'overlay
-        overlayId.style.display = 'flex';  // Mostra l'overlay
-    });
-});
+overlayEl.addEventListener('click', function () {
+    photoOverlay.classList.remove('.display-none')
+})
+

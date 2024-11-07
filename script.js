@@ -24,8 +24,12 @@ console.log('JS-PHOTO-BLOG')
 const cardPhotoEl = document.querySelector('.cardPhoto')
 console.log(cardPhotoEl)
 
-const endPoint = 'https://jsonplaceholder.typicode.com/photos?_limit=6'
+const baseUrl = 'https://jsonplaceholder.typicode.com/'
+let url_body = 'photos'
+
+const endPoint = baseUrl + url_body
 console.log(endPoint)
+
 
 axios
     .get(endPoint, {
@@ -39,11 +43,30 @@ axios
         const photos = res.data
         console.log(photos)
 
-        const titlePhoto = res.data
-        console.log(titlePhoto)
+        // const titlePhoto = res.data
+        // console.log(titlePhoto)
 
-        appendPhoto(photoEl, cardPhotoEl) //richiamo funzione creata fuori
+        appendPhoto(photos, cardPhotoEl) //richiamo funzione creata fuori
     })
     .catch((err) => {
         console.log(err)
     })
+
+
+function appendPhoto(photos, root) {
+    // console.log(photos, root)
+    photos.forEach(photo => {
+        const { url, title } = photo
+
+        const photoCardHtml = `
+        <div class="col-4">
+            <div class="card">
+                <img class="pin" src="./img/pin.svg" alt="">
+                <img class="jpeg" src="${url}" alt="">
+                <p> ${title}</p>
+            </div>
+        </div>
+        `
+        root.innerHTML += photoCardHtml
+    })
+}

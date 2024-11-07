@@ -55,10 +55,10 @@ body {
 
 .card {
     max-width: 215px;
-    height: 260px;
     background-color: white;
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
+
 }
 
 .pin {
@@ -79,6 +79,7 @@ body {
 }
 
 p {
-    text-align: center;
+    /* text-align: center; */
     margin-top: 18px;
+    padding: 10px;
 }

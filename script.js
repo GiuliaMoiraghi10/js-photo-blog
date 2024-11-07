@@ -75,13 +75,25 @@ function appendPhoto(photos, root) {
 // Quando clicco card -> compare overlay
 //  - prendo card
 //  - funzione che al click, fa comparire overlay
+//  - al click del bottone si chiude overlay
 
 const photoOverlay = document.getElementById('click-overlay')
 console.log(photoOverlay)
 
 const overlayEl = document.getElementById('overlayId')
+console.log(overlayEl)
 
-overlayEl.addEventListener('click', function () {
-    photoOverlay.classList.remove('.display-none')
+const buttonClose = document.getElementById('overlayBtn')
+console.log(buttonClose)
+
+photoOverlay.addEventListener('click', function () {
+    overlayEl.classList.remove('.display-none')
+    // console.log(photoOverlay)
 })
+
+buttonClose.addEventListener('click', function () {
+    overlayEl.classList.add('.display-none')
+})
+
+
 

@@ -34,10 +34,12 @@ body {
 .containerMain {
     margin: 0 auto;
     padding: 36px;
+    display: block;
 }
 
 .backgroundMain {
     background-image: url(./img/cork.png);
+    min-height: 100vh;
 }
 
 .row {
@@ -56,7 +58,7 @@ body {
     background-color: white;
     position: relative;
     margin-bottom: 50px;
-
+    box-shadow: 5px 5px 5px rgb(32, 32, 32);
 }
 
 .pin {
@@ -91,6 +93,7 @@ p {
     height: 100vh;
     right: 0;
     left: 0;
+    display: none;
 }
 
 .overlay {

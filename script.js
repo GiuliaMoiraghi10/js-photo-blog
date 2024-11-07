@@ -70,3 +70,21 @@ function appendPhoto(photos, root) {
         root.innerHTML += photoCardHtml
     })
 }
+
+// OVERLAY
+// Prendo elementi overlay
+
+const overlayId = document.getElementById('overlayId');
+const overlayImg = document.getElementById('overlayImg');
+const overlayBtn = document.getElementById('overlayBtn');
+
+// Aggiungo ascolto per ogni img
+const imgs = document.querySelectorAll('.jpeg');
+
+imgs.forEach(jpeg => {
+    jpeg.addEventListener('click', (event) => {
+        const imageUrl = event.target.src;
+        overlayImg.src = imageUrl;  // Imposta l'immagine nell'overlay
+        overlayId.style.display = 'flex';  // Mostra l'overlay
+    });
+});

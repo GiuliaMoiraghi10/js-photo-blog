@@ -1,99 +1,111 @@
 console.log('JS-PHOTO-BLOG')
 
-
-// card
-/* <div class="col-4">
-    <div class="card">
-        <img class="pin" src="./img/pin.svg" alt="">
-        <img class="jpeg" src="./img/Vulpix.full.1515167.webp" alt="">
-        <p>Lorem ipsum dolor sit amet consectetur adipisic.</p>
+// CARD
+/* <div id="col" class="col-4">
+    <div id="cardPhoto" class="card">
+        <img src="./img/pin.svg" alt="" class="pin">
+        <img id="imgPhoto" src="./img/Vulpix.full.1515167.webp" alt="" class="img-card">
+        <p id="titlePhoto" class="photo-title">
+            Lorem ipsum, dolor sit amet consectetur
+        </p>
     </div>
 </div> */
 
-// PROCEDIMENTO (Generico)
-// 1) Fare chiamata ajax a json per recuperare 6 foto e 6 titoli
-// 2) Quando arriva risposta, genero html delle card con foto e titoli e li metto nel DOM
+// Fare una chiamata ajax a json placeholder per recuperare 6 foto e 6 titoli.
+// Una volta arrivata la risposta, generiamo l'html delle card e lo mettiamo dentro al DOM
 
-// PROCEDIMENTO (Specifico)
-// 1) Prendere row dove andranno colonne e card html (.url e .title)
-// 2) Creo variabile con nome url completo
-// 3) Faccio chiamata axios per prendere url json
-// 4) Faccio funzione con ciclo for per generare 6 card
-// 5) Appendo le card all'html
-
-const cardPhotoEl = document.querySelector('.cardPhoto')
-console.log(cardPhotoEl)
-
+// Creo 2 variabili, una con base URL di axios e una con http body e le combino
 const baseUrl = 'https://jsonplaceholder.typicode.com/'
-let url_body = 'photos'
+let urlBody = 'photos'
 
-const endPoint = baseUrl + url_body
-console.log(endPoint)
+const endpoint = baseUrl + urlBody
+console.log(endpoint)
 
+// Prendo classe della raw su cui dovrò appendere le card
+const cardListEl = document.querySelector('.cards-list')
+console.log(cardListEl)
 
-axios
-    .get(endPoint, {
-        params: {
-            _limit: 6,
-        },
-    })
+// Faccio chiamata axios
+axios.get(endpoint, {
+    params: {
+        _limit: 6
+    },
+})
     .then((res) => {
-        // console.log(res)
-
+        console.log(res)
         const photos = res.data
-        console.log(photos)
+        // console.log(photos)
 
-        // const titlePhoto = res.data
-        // console.log(titlePhoto)
-
-        appendPhoto(photos, cardPhotoEl) //richiamo funzione creata fuori
+        appendCards(photos, cardListEl)
+        console.log(appendCards)
     })
     .catch((err) => {
         console.log(err)
     })
 
+// Creo funzione che prenda le foto ricavate da array axios e la classe html in cui andranno appese le card
+function appendCards(photos, root) {
 
-function appendPhoto(photos, root) {
-    // console.log(photos, root)
+    // Ciclo array per poter prendere elementi che mi servono (photo e title)
     photos.forEach(photo => {
+        console.log(photo)
+
+        // Creo variabile in cui prendo solo elementi dell'oggetto che mi servono
         const { url, title } = photo
 
-        const photoCardHtml = `
-        <div class="col-4">
-            <div class="card">
-                <img class="pin" src="./img/pin.svg" alt="">
-                <img class="jpeg" src="${url}" alt="">
-                <p> ${title}</p>
+        // Creo variabile in cui metto html
+        const photoCardHTML = `
+        <div id="col" class="col-4">
+            <div id="cardPhoto" class="card">
+                <img src="./img/pin.svg" alt="" class="pin">
+                <img id="imgPhoto" src=${url} alt="" class="img-card">
+                <p id="titlePhoto" class="photo-title">
+                    ${title}
+                </p>
             </div>
         </div>
         `
-        root.innerHTML += photoCardHtml
-    })
+        // Appendo html a root con innerHTML
+        cardListEl.innerHTML += photoCardHTML
+
+        // Prendo classe card presente in tutti i div per poter creare evento al click della card e aprire overlay
+        const cardCollection = document.querySelectorAll('.card')
+        console.log(cardCollection)
+
+        // Ciclo le card e scateno evento al click per ogni card
+        cardCollection.forEach((card, i) => {
+            card.addEventListener('click', () => {
+                console.log('click sulla card')
+                console.log(photos[i])
+
+                // Faccio apparire overlay al click della card
+                overlayEl.style.display = 'flex'
+
+                const { url } = photos[i]
+                overlayImgEl.src = url
+            })
+        })
+    });
 }
 
-// OVERLAY
-// Quando clicco card -> compare overlay
-//  - prendo card
-//  - funzione che al click, fa comparire overlay
-//  - al click del bottone si chiude overlay
+// Overlay
 
-const photoOverlay = document.getElementById('click-overlay')
-console.log(photoOverlay)
+// Prendo bottone di chiusura da html
+const closeBtn = document.querySelector('.gallery-overlay .overlay-btn')
+console.log(closeBtn)
 
-const overlayEl = document.getElementById('overlayId')
+// Prendo elemento dell'overlay dal dom
+const overlayEl = document.querySelector('.gallery-overlay')
 console.log(overlayEl)
 
-const buttonClose = document.getElementById('overlayBtn')
-console.log(buttonClose)
+// Prendo riferimento dell'immagine da mettere sull'overlay
+const overlayImgEl = document.querySelector('.gallery-overlay img')
+console.log(overlayImgEl)
 
-photoOverlay.addEventListener('click', function () {
-    overlayEl.classList.remove('.display-none')
-    // console.log(photoOverlay)
+
+// Evento al click del bottone
+closeBtn.addEventListener('click', () => {
+    console.log('Chiudi foto')
+
+    overlayEl.style.display = 'none'
 })
-
-buttonClose.addEventListener('click', function () {
-    overlayEl.classList.add('.display-none')
-})
-
-
-

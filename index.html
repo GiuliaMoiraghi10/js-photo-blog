@@ -4,42 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>js-photo-blog</title>
+    <title>JA-PHOTO-BLOG</title>
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Chewy&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
     <!-- CSS -->
     <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
+    <section class="container-full">
+        <div class="header-title">
+            <h1 class="title-head">ESTATE '24</h1>
+        </div>
+        <div class="container-md">
+            <div class="row cards-list">
 
-    <!-- OVERLAY -->
-    <section id="overlayId" class="containerOverlay display-none">
-        <div class="overlay">
-            <button id="overlayBtn" class="btnClose">Chiudi</button>
-            <img id="overlayImg" class="imgZoom" src="./img/Vulpix.full.1515167.webp" alt="">
+            </div>
         </div>
     </section>
 
-    <!-- HEADER -->
-    <header class="titleHeader">
-        <div class="container">
-            <h1 class="title">ESTATE '24</h1>
-        </div>
-    </header>
-
-    <!-- MAIN -->
-    <main class="backgroundMain">
-        <div class="containerMain">
-            <div class="row cardPhoto">
-                <div id="click-overlay"></div>
-            </div>
-        </div>
-    </main>
+    <!-- Overlay -->
+    <div class="gallery-overlay" style="display: none;">
+        <button class="overlay-btn">Chiudi</button>
+        <img class="overlay-img" src="./img/Vulpix.full.1515167.webp" alt="">
+    </div>
 
     <!-- AXIOS -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
